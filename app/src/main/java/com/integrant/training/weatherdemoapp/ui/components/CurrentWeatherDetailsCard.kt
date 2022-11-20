@@ -25,7 +25,7 @@ import com.integrant.training.weatherdemoapp.ui.theme.*
 fun CurrentWeatherDetailsCard(
     weather: Weather,
     modifier: Modifier = Modifier,
-    cardCorner: Dp = spacing.homeCardElevation,
+    cardCorner: Dp = spacing.homeScreenCornerRadius,
     elevation: CardElevation = CardDefaults.cardElevation(),
     weatherProprieties: @Composable () -> Unit
 ) {
