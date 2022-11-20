@@ -85,7 +85,7 @@ fun CurrentWeatherDetailsCard(
 
 @Preview
 @Composable
-fun previewCard() {
+fun PreviewCard() {
     WeatherDemoAppTheme {
         CurrentWeatherDetailsCard(
             weather = Weather(

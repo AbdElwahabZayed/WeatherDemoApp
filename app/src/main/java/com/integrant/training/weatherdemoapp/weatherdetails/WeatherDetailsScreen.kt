@@ -59,7 +59,7 @@ fun WeatherDetailsScreen(
 
 @Preview(showBackground = true)
 @Composable
-fun previewWeatherScreen() {
+fun PreviewWeatherScreen() {
     WeatherDemoAppTheme {
         WeatherDetailsScreen(
             weatherValue
