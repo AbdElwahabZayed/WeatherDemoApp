@@ -6,16 +6,12 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.integrant.training.weatherdemoapp.model.Weather
 import com.integrant.training.weatherdemoapp.model.weatherValue
 import com.integrant.training.weatherdemoapp.ui.components.CurrentWeatherDetailsCard
 import com.integrant.training.weatherdemoapp.ui.components.HourlyLazyList
 import com.integrant.training.weatherdemoapp.ui.components.WeatherProprieties
-import com.integrant.training.weatherdemoapp.ui.theme.WeatherDemoAppTheme
-import com.integrant.training.weatherdemoapp.ui.theme.blue
-import com.integrant.training.weatherdemoapp.ui.theme.textWhiteColor
+import com.integrant.training.weatherdemoapp.ui.theme.*
 
 
 @Composable
@@ -28,31 +24,34 @@ fun WeatherDetailsScreen(
             .background(blue),
     ) {
         CurrentWeatherDetailsCard(
-            modifier = Modifier.padding(16.dp),
+            modifier = Modifier.padding(spacing.dp16),
             weather = weather
         ) {
             WeatherProprieties(
                 modifier = Modifier.fillMaxWidth(),
-                iconModifier = Modifier.size(25.dp, 25.dp),
+                iconModifier = Modifier.size(spacing.dp25),
                 airPressure = weather.pressure ?: "",
                 humidity = weather.humidity ?: "",
                 airSpeed = weather.airSpeed ?: "",
-                textSize = 16.sp
+                textSize = fontScaling.normalText
             )
         }
 
-        Spacer(modifier = Modifier.height(20.dp))
+        Spacer(modifier = Modifier.height(spacing.dp20))
 
         Text(
-            modifier = Modifier.padding(8.dp),
+            modifier = Modifier.padding(spacing.dp16),
             text = "Today",
-            fontSize = 24.sp,
+            fontSize = fontScaling.extraBigText,
             color = textWhiteColor
         )
 
-        Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(spacing.dp8))
 
-        HourlyLazyList(weatherList = weather.hourlyWeather)
+        HourlyLazyList(
+            modifier = Modifier.paddingStart(spacing.dp16),
+            weatherList = weather.hourlyWeather
+        )
     }
 }
 

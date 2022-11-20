@@ -16,20 +16,16 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.integrant.training.weatherdemoapp.R
 import com.integrant.training.weatherdemoapp.model.IconData
 import com.integrant.training.weatherdemoapp.model.Weather
-import com.integrant.training.weatherdemoapp.ui.theme.WeatherDemoAppTheme
-import com.integrant.training.weatherdemoapp.ui.theme.darkBlue
-import com.integrant.training.weatherdemoapp.ui.theme.textWhiteColor
+import com.integrant.training.weatherdemoapp.ui.theme.*
 
 @Composable
 fun CurrentWeatherDetailsCard(
     weather: Weather,
     modifier: Modifier = Modifier,
-    cardCorner: Dp = 20.dp,
+    cardCorner: Dp = spacing.homeCardElevation,
     elevation: CardElevation = CardDefaults.cardElevation(),
     weatherProprieties: @Composable () -> Unit
 ) {
@@ -47,37 +43,38 @@ fun CurrentWeatherDetailsCard(
                 text = weather.time,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(0.dp, 16.dp, 16.dp, 0.dp),
+                    .paddingEnd(spacing.dp16)
+                    .paddingTop(spacing.dp16),
                 color = textWhiteColor,
                 textAlign = TextAlign.End
             )
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(spacing.dp8))
             Image(
-                modifier = Modifier.size(200.dp, 200.dp),
+                modifier = Modifier.size(spacing.weatherImageSize),
                 painter = painterResource(id = weather.weatherIcon.resId),
                 contentDescription = weather.weatherIcon.contentDescription,
                 contentScale = ContentScale.FillWidth
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(spacing.dp16))
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 color = textWhiteColor,
-                fontSize = 48.sp,
+                fontSize = textWithoutScale(size = 48f),
                 text = weather.temp
             )
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(spacing.dp16))
             Text(
                 modifier = Modifier.fillMaxWidth(),
                 textAlign = TextAlign.Center,
                 color = textWhiteColor,
                 text = weather.weatherStatus ?: "",
-                fontSize = 22.sp
+                fontSize = textWithoutScale(size = 22f)
             )
-            Spacer(modifier = Modifier.height(26.dp))
+            Spacer(modifier = Modifier.height(spacing.dp25))
             weatherProprieties()
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(spacing.dp8))
         }
     }
 }
@@ -105,11 +102,11 @@ fun PreviewCard() {
         ) {
             WeatherProprieties(
                 modifier = Modifier.fillMaxWidth(),
-                iconModifier = Modifier.size(25.dp, 25.dp),
+                iconModifier = Modifier.size(spacing.dp25),
                 airPressure = "1005hpa",
                 humidity = "72%",
                 airSpeed = "10Km/h",
-                textSize = 16.sp
+                textSize = fontScaling.normalText
             )
         }
     }

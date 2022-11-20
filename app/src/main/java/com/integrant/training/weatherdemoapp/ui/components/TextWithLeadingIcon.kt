@@ -9,11 +9,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import com.integrant.training.weatherdemoapp.R
 import com.integrant.training.weatherdemoapp.model.IconData
 import com.integrant.training.weatherdemoapp.ui.theme.WeatherDemoAppTheme
+import com.integrant.training.weatherdemoapp.ui.theme.fontScaling
+import com.integrant.training.weatherdemoapp.ui.theme.spacing
 import com.integrant.training.weatherdemoapp.ui.theme.textGrayColor
 
 @Composable
@@ -33,7 +33,7 @@ fun TextWithLeadingIcon(
             contentDescription = icon.contentDescription,
             tint = textGrayColor
         )
-        Spacer(modifier = Modifier.width(4.dp))
+        Spacer(modifier = Modifier.width(spacing.dp4))
         Text(
             modifier = Modifier,
             text = text,
@@ -52,13 +52,13 @@ fun WeatherProprieties(
     humidity: String,
     airSpeed: String,
     iconModifier: Modifier = Modifier,
-    textSize: TextUnit = 20.sp
+    textSize: TextUnit = fontScaling.slightBigText
 
 ) {
     Row(
         modifier = modifier
             .fillMaxWidth()
-            .padding(8.dp),
+            .padding(spacing.dp8),
         horizontalArrangement = Arrangement.SpaceAround
     ) {
         TextWithLeadingIcon(
@@ -101,7 +101,7 @@ fun WeatherProprieties(
 fun Preview() {
     WeatherDemoAppTheme() {
         WeatherProprieties(
-            Modifier.width(600.dp),
+            Modifier.width(spacing.dp260),
             airPressure = "1005hpa",
             humidity = "72%",
             airSpeed = "10Km/h"
