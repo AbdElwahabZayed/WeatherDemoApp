@@ -2,6 +2,8 @@ package com.integrant.training.weatherdemoapp.weatherdetails
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -18,9 +20,11 @@ import com.integrant.training.weatherdemoapp.ui.theme.*
 fun WeatherDetailsScreen(
     weather: Weather,
 ) {
+    val scrollState = rememberScrollState()
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .verticalScroll(scrollState)
+            .fillMaxWidth()
             .background(blue),
     ) {
         CurrentWeatherDetailsCard(
